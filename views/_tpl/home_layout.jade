@@ -1,0 +1,66 @@
+doctype html
+html(data-use-rem)
+  head
+    meta(charset='UTF-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    //- meta(name='viewport', content='width=device-width, user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1')
+    meta(content='telephone=no', name='format-detection')
+    block head
+    -if(pageTitle){
+      title #{pageTitle}
+    -}else{
+      title 头像挂件 - 设计助理
+    -}
+    link(rel='stylesheet', href='/css/common.css')
+    link(rel='stylesheet', href='/css/bubble.css')
+    link(rel='stylesheet', href='/css/style.css')
+    link(rel='stylesheet', href='/css/cmshow.css')
+    link(rel='stylesheet', href='/css/imgcompare.css')
+
+    script(src="/js/jquery.js")
+    script(src="/js/underscore.js")
+    script(src="/js/dropzone.js")
+    script(src="/js/dropzone-event.js")
+    script(src="/js/jquery.colorbox.js")
+    script(src="/js/p.js")
+
+body(ontouchstart='')
+  section#container
+    header
+      a(href="#").logo
+      nav
+        -if(currentProject=='home'){
+          a(href="/").current 头像挂件
+        -}else{
+          a(href="/") 头像挂件
+          i.line
+          -if(currentProject=='cmshow'){
+            a(href="/cmshow/index").current 厘米秀
+          -}else{
+            a(href="/cmshow/index") 厘米秀
+          -}
+        -}
+        
+        i.line
+        //- a(href="#") QQ表情
+        //- i.line
+        //- a(href="#") 个性名片
+        //- i.line
+        //- a(href="#") 聊天气泡
+        //- i.line
+        //- a(href="#") 头像挂件
+      .user_panel
+        .item.i_voice.user_voice
+        .item.user_message 6
+        .item.user_line
+        .item.user_name #{username}
+        .item.user_face
+          img(src="../img/avatar.jpg")
+        .item.logout 退出
+    block content
+    -if(otherJS){
+      -for(var i =0;i<otherJS.length;i++){
+        script(src='#{otherJS[i]}.js')
+      -}
+    -}
+    block footer

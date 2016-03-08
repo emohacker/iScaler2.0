@@ -1,0 +1,25 @@
+@charset "utf-8";
+.none{
+    display: none;
+}
+
+.text.limited{
+    width: 100%;
+    display: inline-block;
+    vertical-align: top;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+@mixin clearfix{ 
+    content: "";
+    clear: both;
+    display: table;
+    line-height: 0;
+    height: 0;
+}
+@mixin textlimit($overflow:ellipsis){
+    text-overflow: $overflow;
+    overflow: hidden;
+    white-space: nowrap;
+}

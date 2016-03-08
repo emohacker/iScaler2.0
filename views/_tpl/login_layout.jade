@@ -1,0 +1,24 @@
+doctype html
+html(data-use-rem)
+  head
+    meta(charset='UTF-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    //- meta(name='viewport', content='width=device-width, user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1')
+    meta(content='telephone=no', name='format-detection')
+    block head
+    -if(pageTitle){
+      title #{pageTitle}
+    -}else{
+      title 设计助理
+    -}
+    link(rel='stylesheet', href='/css/login.css')
+    script(src="/js/jquery.js")
+    script(src="/js/underscore.js")
+  body(ontouchstart='')
+    block content
+    -if(otherJS){
+      -for(var i =0;i<otherJS.length;i++){
+        script(src='#{otherJS[i]}.js')
+      -}
+    -}
+    block footer

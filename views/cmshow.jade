@@ -1,0 +1,21 @@
+extends _tpl/home_layout
+block head
+block content
+  section#main-content
+    section.wrapper
+      div.cmshow-uploader
+        h1 上传序列ZIP包
+        .uploading-mask
+          .t uploading...
+        .drop-wrap
+          form#mydropzone.dropzone(action='/cmshow/zipupload')
+            #dropuploader.fallback
+              input(name='file', type='file', multiple='')
+            input#dropdirname(type='hidden', name='dirname', value='xxxxxx')
+            .ssize
+              | 宽度：
+              input(type='text', name='swidth', value='440')
+              | 高度：
+              input(type='text', name='sheight', value='516')
+block footer
+  script(src='/js/cmshow.js')

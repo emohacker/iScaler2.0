@@ -1,0 +1,289 @@
+/*CSS Reset*/
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+fieldset,
+legend,
+input,
+textarea,
+p,
+blockquote,
+th,
+td,
+header,
+hgroup,
+nav,
+section,
+article,
+aside,
+footer,
+figure,
+figcaption,
+menu,
+button {
+    margin: 0;
+    padding: 0;
+    outline: 0;   
+}
+
+body {
+    font-family: "Microsoft YaHei", "微软雅黑", helvetica, arial, verdana, tahoma, sans-serif; 
+    line-height: 1.5;
+    font-size: 14px;
+    color: #000;
+    background: #fff;
+}
+html,body{
+    min-height: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-size: inherit;
+    font-weight: normal;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+fieldset,
+img {
+    border: 0;
+}
+
+li {
+    list-style: none;
+}
+
+input,
+button,
+textarea,
+select {
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    border: 0;
+    background: none;
+    -webkit-appearance: none;
+    outline: 0;
+}
+a,button,input,select,textarea,a:focus,button:focus,input:focus,select:focus,textarea:focus,[onclick]{
+    outline: 0;
+    -webkit-tap-highlight-color:rgba(255,255,255,0);
+}
+a {
+    text-decoration: none;
+    color: #00a5e0;
+    outline: 0;
+    
+}
+
+em,i {
+    font-style: normal;
+    
+}
+
+
+/*布局共同体11*/
+html,body,.layout{
+    height: 100%;
+    width: 100%;
+}
+.layout{
+  -webkit-box-sizing:border-box;
+  -moz-box-sizing:border-box;
+  -mz-ms-sizing:border-box;
+  box-sizing:border-box;
+  min-height: 100%;
+  margin: 0 auto;
+  padding-top: 34px;
+  min-width: 980px;
+}
+.aside,.main{
+  overflow:hidden;
+  min-height: 100%;
+  float: left;
+  -webkit-box-sizing:border-box;
+  -moz-box-sizing:border-box;
+  -mz-ms-sizing:border-box;
+  box-sizing:border-box;
+}
+.container{
+  position: absolute;
+  top: 70px;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  overflow-y:auto;
+}
+
+/*布局容器尺寸约定*/
+.layout{
+  width: 1300px;
+}
+.aside{
+  width: 400px;
+}
+.main{
+  width: 900px;
+}
+
+
+
+/*响应式查询*/
+@media screen and (max-width: 1920px){
+  .layout{
+    width: 1740px;
+  }
+  .main{
+    width: 1340px
+  }
+}
+@media screen and (max-width: 1680px){
+  .layout{
+    width: 1520px;
+  }
+  .main{
+    width: 1120px
+  }
+}
+@media screen and (max-width: 1440px){
+  .layout{
+    width: 1300px;
+  }
+  .main{
+    width: 900px
+  }
+}
+@media screen and (max-width: 1280px){
+  .layout{
+    width: 1080px;
+  }
+  .main{
+    width: 680px
+  }
+}
+
+
+/*icon*/
+[class*="i_"]{
+  display: inline-block;
+  vertical-align: middle;
+  width: 20px;
+  height: 20px;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+.i_voice{
+  background-image:url(../img/i_voice.png); 
+}
+
+
+
+
+/*
+*头部
+*/
+header{
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-width: 980px;
+  height: 70px;
+  overflow: hidden;
+  background-color: #373d42;
+  //logo
+  .logo{
+    width: 170px;
+    height: 70px;
+    float: left;
+    background: url(../img/logo.png) left top no-repeat;
+    background-color: #2ea4d0;
+  }
+  //导航
+  nav{
+    float: left;
+    height: 100%;
+    margin-left: 50px;
+    a{
+      line-height: 40px;
+      float: left;
+      padding: 15px 30px;
+      color: #7c838a;
+    }
+    a.current{
+      color: #fff;
+      // background: url(../img/nav_arrow_b.png) center bottom no-repeat;
+    }
+    .line{
+      margin: 29px 0;
+      float: left;
+      height: 12px;
+      width: 1px;
+      background-color: #696f75;
+    }
+  }
+  //用户面板
+  .user_panel{
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 40px;
+    padding: 15px 0;
+    text-align: right;
+  }
+  .item{
+    display: inline-block;
+    height: 40px;
+    line-height: 40px;
+    color: #7c838a;
+    margin: 0 15px;
+    vertical-align: middle;
+  }
+  .user_voice{
+    width: 22px;
+    height: 13px;
+  }
+  .user_message{
+    background-color: #f9624e;
+    border-radius: 11px;
+    height: 22px;
+    line-height: 22px;
+    margin: 9px 0;
+    padding: 0 8px;
+    color: #fff;
+    margin-right:15px;
+  }
+  .user_line{
+    margin: 9px 0;
+    height: 12px;
+    width: 1px;
+    background-color: #696f75;
+  }
+  .user_face{
+    width: 40px;
+    border-radius: 100%;
+    background-color: #fff;
+    overflow:hidden;
+    img{
+      display: block;
+      border: 0 none;
+    }
+  }
+}

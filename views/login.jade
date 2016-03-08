@@ -1,0 +1,43 @@
+extends _tpl/login_layout
+block head
+block content
+  .login_bg
+    // photo for http://www.webmart.tw/blog/20-inspirational-examples-of-designer-workspaces/
+    .login_header
+      span
+    .container
+      .form_header
+        h1#logo 设计助理
+        h2#subheading Design Assistant
+      .signup_forms
+        form#sign_form.signup_form_form(method='post', action="/login/auth")
+          #signup_forms_container.signup_forms_container
+            #signup_account.signup_account
+              .form_user
+                input#signup_email(type='text',autocomplete="off" ,class="username", name='username', placeholder='用户名')
+              .form_password
+                input#signup_password(type='password', autocomplete="off", class="password" ,name='password', placeholder='密码')
+          button#signup_forms_submit.btn-commit(type='button')
+            span
+              strong Log in
+          .notification 用户名错误
+    .footer
+      .footer_signup_link
+        a.signup_link(href='##') Feedback
+        a.link.unnamed_1(href='https://www.baidu.com', target='_blank')  QQ：2068106780
+        a.link.unnamed_2(href='#', target='_blank') Email：2068106780@qq.com
+      .design_show(style='display:none;')
+        .designer_info
+          a(href='#') 问题反馈，Email：2068106780@qq.com，QQ：2068106780
+  //- .wrap
+    .login-wrap
+      .logo 设计助理
+      .login-form
+        form(action="/login/auth" method="post")
+          .inputer
+            input(type="text" autocomplete="off" class="username" name="username" placeholder="用户名")
+          .inputer
+            input(type="password" autocomplete="off" class="password" name="password" placeholder="密码")
+          .notification
+          .btn.btn-commit 登陆
+  script(src="/js/login.js")

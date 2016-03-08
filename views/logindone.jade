@@ -1,0 +1,29 @@
+extends _tpl/login_layout
+block head
+block content
+  .wrap
+    .login_bg
+    .login_header
+      span
+    .container
+      .form_header
+        h1#logo 设计助理
+        h2#subheading Design Assistant
+      .signup_forms
+        button#signup_forms_submit.btn-logout(type='button')
+          span
+            strong Log out
+    .footer
+      .footer_signup_link
+        a.signup_link(href='##') Feedback
+        a.link.unnamed_1(href='https://www.baidu.com', target='_blank')  QQ：2068106780
+        a.link.unnamed_2(href='#', target='_blank') Email：2068106780@qq.com
+      .design_show(style='display:none;')
+        .designer_info
+          a(href='#') 问题反馈，Email：2068106780@qq.com，QQ：2068106780
+    //- .login-wrap
+      .logo 设计助手
+      .login-done 已登陆
+      .btn.btn-logout 退出
+        
+  script(src="/js/login.js")

@@ -1,0 +1,177 @@
+extends _tpl/home_layout
+block head
+  //- -var otherCSS=['xxx.css']
+block content
+      section#main-content
+        section.wrapper
+            .popup-upload(style="display:none;")
+                .bd
+                  a.ibtn.i_upload.add-project(href='javascript:;')
+                  h2 输入挂件名称
+                  input#newproject_name.form-control(type='text',value="", placeholder='')
+                  div.div-btn
+                    a.add-project.g-btn(href='javascript:;') 添加
+                  .close close
+            .projectlist
+              .scaler-bar 头像挂件列表
+              .projectlist-main
+                button.btn-add 添加头像挂件
+                div
+                  ul.list
+                    each val, index in projects 
+                      li
+                        .img_wrap
+                          img(title='#{val.pname}', src='uploads/#{val.dirname}/100/aio_50-100x118.png', alt='#{val.pname}')
+                          //img(title='#{val.pname}', src='uploads/#{val.dirname}/final/preview_new-188x222.png', alt='#{val.pname}')
+                          .avatar
+                        .info_wrap.row
+                          .name.col #{val.datetime}
+                          i.i_edit.btn-modify(dirname='#{val.dirname}', title='修改')
+                          i.i_del.btn-delete(dirname='#{val.dirname}', title='删除')
+                        .item-name #{val.pname}
+            .pagenations
+              if page.currentPage == 1
+                li
+                  span.disabled Previous
+              else
+                li
+                  a(href="#{page.currentPage-1}") Previous
+              li
+                .info <span>#{page.currentPage}</span>&nbsp;/&nbsp;<strong>#{page.count}</strong>
+              if page.currentPage == page.count
+                li
+                  span.disabled Next
+              else
+                li
+                  a(href="#{parseInt(page.currentPage)+1}") Next
+                  
+          .scaler-wrap
+            .scaler-bar
+              a.exit-tolist(href='javascript:;') 返回挂件列表
+            .scaler
+              .leftform
+                .function-bar
+                  h1 名称：
+                    span.pname
+                .f-top
+                  .uploader
+                    h2 点击上传
+                    form#mydropzone.dropzone(action='/pendanter/fileupload')
+                      #dropuploader.fallback
+                        input(name='file', type='file', multiple='')
+                      input#dropdirname(type='hidden', name='dirname', value='xxxxxx')
+                  ol.step
+                    li.step1 1.封面图(PNG)
+                    li.step2 2.动画序列(ZIP)
+                  .opter
+                    a.disabled.package-download(href='javascript:;') 打包下载
+
+              .wrap
+                .setup
+                  .opter
+                    h2 压缩率：
+                    .opt-options
+                      //- a(100='' href='javascript:;' opt='100' if_eq opt 100 #{class="active"} ) 100
+                      //a(100='' href='javascript:;' opt='100' ) 100
+                      //a(90=''  href='javascript:;' opt='90' ) 90
+                      a(80=''  href='javascript:;' opt='80' ) 优
+                      a(70=''  href='javascript:;' opt='70' ) 良
+                      a(60=''  href='javascript:;' opt='60' ) 中
+                      a(50=''  href='javascript:;' opt='50' ) 差
+                  .function
+                    a.add-section(href='#addsection') +添加尺寸
+
+                div#sizelist
+                  .cont
+                    each val, index in size 
+                      .item
+                        - val.add_name = val.add_name.replace(".png","")
+                        .hd
+                          //优化后图像
+                          span.img-opt(imgname='#{val.add_name}')
+                            img(src='', alt='', width='#{val.add_width}px', height='#{val.add_height}px')
+                        .bd
+                          .name
+                            span.fname #{val.add_name}
+                          .position
+                            span 偏移&nbsp;&nbsp;
+                            span X:
+                            span.x #{val.add_x}
+                            span &nbsp;Y:
+                            span.y #{val.add_y}
+                        .ft
+                          span.img(class="original" imgname='#{val.add_name}')
+                            del &nbsp;压缩前
+                              span.sizetag
+                            span(style="padding:0 5px;") /
+                          span.img-opt(imgname='#{val.add_name}')
+                            span &nbsp;压缩后
+                            span.sizetag
+                          //- .operation
+                            a.ibtn.btn-edit(href='javascript:;', size-width='#{val.add_width}', size-height='#{val.add_height}', size-x='#{val.add_x}', size-y='#{val.add_y}', size-name='#{val.add_name}', sindex='#{index}') 编辑&nbsp;&nbsp;
+                            if index
+                              a.ibtn.btn-delete(href='javascript:;', sindex='#{index}') 删除
+                    .item.item-animation
+                      //序列帧
+                      .hd
+                        .img-opt-animation
+                          .animation-frame
+                      .bd
+                        .name
+                          span.fname preview_new-188x222.png 
+                        //- .position
+                        //-   span 偏移&nbsp;&nbsp;
+                        //-   span X:
+                        //-   span.x 0
+                        //-   span &nbsp;Y:
+                        //-   span.y 0
+                      .ft
+                        span.img(class="original" imgname='preview_new-188x222')
+                          del &nbsp;压缩前
+                            span.sizetag
+                          span(style="padding:0 5px;") /
+                        span.img-opt(imgname='preview_new-188x222')
+                          span &nbsp;压缩后
+                          span.sizetag
+                          
+          .loadingmask.none
+            i.ico.i-loading
+          div(style='display:none;')
+            #addsection
+              .wrap
+                .inputer
+                  h3 输入参数 
+                  table.parameters
+                    tr
+                      td 宽度：
+                      td
+                        input#add_width(type='text') 
+                        | px
+                    tr
+                      td 高度：
+                      td
+                        input#add_height(type='text') 
+                        | px
+                    tr
+                      td X偏移量：
+                      td
+                        input#add_x(type='text', value='0')
+                        | px
+                    tr
+                      td Y偏移量：
+                      td
+                        input#add_y(type='text', value='0') 
+                        | px
+                    tr
+                      td 文件名：
+                      td
+                        input#add_name(type='text', value='xxx.png')
+                  .bar
+                    a.sava-size(href='javascript:;', title='保存') 保存
+                .preview
+                  #original_ourline
+                    #outline
+                      img.img-targetsize
+
+block footer
+  script(src='js/pendanter.js')
